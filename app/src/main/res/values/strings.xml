@@ -1,3 +1,18 @@
 <resources>
-    <string name="app_name">INSOPTAndroidPractice</string>
+    <string name="app_name">YeongJu</string>
+
+    <!-- Sign In & Sign Up-->
+    <string name="sign_in_title">Welcome to SOPT</string>
+    <string name="id">ID</string>
+    <string name="pwd">비밀번호</string>
+    <string name="login">Login</string>
+    <string name="sign_up">SIGNUP</string>
+    <string name="mbti">MBTI</string>
+    <string name="sign_in_id_hint">아이디를 입력하세요.</string>
+    <string name="sign_in_pwd_hint">비밀번호를 입력하세요.</string>
+    <string name="mbti_hint">MBTI를 입력하세요.</string>
+    <string name="sign_up_id_hint">6글자 이상 10글자 이하</string>
+    <string name="sign_up_pwd_hint">8글자 이상 12글자 이하</string>
+    <string name="complete_sign_up">회원가입 완료</string>
+
 </resources>
