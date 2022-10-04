@@ -32,7 +32,7 @@ class SignInActivity : AppCompatActivity() {
         initSignUpBtnOnClickListener()
     }
 
-    private fun isCheckLogin(): Boolean {
+    private fun checkLogin(): Boolean {
         return binding.etSignInId.text.toString() == userId && binding.etSignInPwd.text.toString() == userPwd
     }
 
@@ -47,7 +47,7 @@ class SignInActivity : AppCompatActivity() {
 
     private fun initLoginBtnOnClickListener() {
         binding.btnLogin.setOnClickListener {
-            if (isCheckLogin()) {
+            if (checkLogin()) {
                 Toast.makeText(this, "로그인에 성공하셨습니다.", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, HomeActivity::class.java)
                 putUserInfo(intent)
