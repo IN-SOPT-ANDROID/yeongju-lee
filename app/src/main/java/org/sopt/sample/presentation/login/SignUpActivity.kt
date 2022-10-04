@@ -17,7 +17,7 @@ class SignUpActivity : AppCompatActivity() {
 
     private fun initSignUpBtnOnClickListener() {
         binding.btnSignUp.setOnClickListener {
-            if (isCheckId() && isCheckPwd() && isCheckMbti()) {
+            if (checkId() && checkPwd() && checkMbti()) {
                 putUserInfo()
                 finish()
             } else Snackbar.make(binding.root, "입력한 정보를 확인해주세요.", Snackbar.LENGTH_SHORT).show()
@@ -32,15 +32,15 @@ class SignUpActivity : AppCompatActivity() {
         setResult(RESULT_OK, intent)
     }
 
-    private fun isCheckId(): Boolean {
+    private fun checkId(): Boolean {
         return binding.etSignUpId.text.length in 6..10
     }
 
-    private fun isCheckPwd(): Boolean {
+    private fun checkPwd(): Boolean {
         return binding.etSignUpPwd.text.length in 8..12
     }
 
-    private fun isCheckMbti(): Boolean {
+    private fun checkMbti(): Boolean {
         return binding.etSignUpMbti.text.length == 4
     }
 }
