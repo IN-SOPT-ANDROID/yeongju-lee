@@ -26,7 +26,7 @@ class SignInActivity : BaseActivity<ActivitySignInBinding>(R.layout.activity_sig
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.vm = signInViewModel
-        sucessLogin()
+        observeSucessLogin()
         initSignUpBtnOnClickListener()
     }
 
@@ -39,10 +39,10 @@ class SignInActivity : BaseActivity<ActivitySignInBinding>(R.layout.activity_sig
         }
     }
 
-    private fun sucessLogin() {
+    private fun observeSucessLogin() {
         signInViewModel.successLogin.observe(this) { success ->
             if (success) {
-                showToast(("로그인에 성공하셨습니다."))
+                showToast("로그인에 성공하셨습니다.")
                 val intent = Intent(this, HomeActivity::class.java)
                 intent.putExtra("userInfo", signInViewModel.userInfo.value)
                 startActivity(intent)

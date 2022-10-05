@@ -11,13 +11,10 @@ class SignInViewModel : ViewModel() {
     private val _userInfo = MutableLiveData<User>()
     val userInfo: LiveData<User> = _userInfo
 
-    private val _id = MutableLiveData<String>()
-    val id: LiveData<String> = _id
+    val id = MutableLiveData("")
+    val pwd = MutableLiveData("")
 
-    private val _pwd = MutableLiveData<String>()
-    val pwd: LiveData<String> = _pwd
-
-    private val _successLogin = MutableLiveData(false)
+    private val _successLogin = MutableLiveData<Boolean>()
     val successLogin: LiveData<Boolean> = _successLogin
 
     fun loginOnClick() {

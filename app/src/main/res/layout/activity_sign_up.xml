@@ -101,6 +101,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="40dp"
             android:layout_marginTop="20dp"
+            android:onClick="@{()->vm.signUpOnClick()}"
             android:text="@string/complete_sign_up"
             app:layout_constraintTop_toBottomOf="@id/et_sign_up_mbti" />
 
