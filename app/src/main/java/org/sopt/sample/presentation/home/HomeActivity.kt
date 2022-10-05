@@ -1,17 +1,13 @@
 package org.sopt.sample.presentation.home
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import org.sopt.sample.R
 import org.sopt.sample.databinding.ActivityHomeBinding
+import org.sopt.sample.util.binding.BaseActivity
 
-class HomeActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityHomeBinding
-
+class HomeActivity : BaseActivity<ActivityHomeBinding>(R.layout.activity_home) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityHomeBinding.inflate(layoutInflater)
-        setContentView(binding.root)
         getUserInfo()
     }
 

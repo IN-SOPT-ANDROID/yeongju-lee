@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">YeongJu</string>
+    <!-- Util -->
+    <string name="binding_error">Binding not initialized to reference the view.</string>
 
     <!-- Sign In & Sign Up-->
     <string name="sign_in_title">Welcome to SOPT</string>
