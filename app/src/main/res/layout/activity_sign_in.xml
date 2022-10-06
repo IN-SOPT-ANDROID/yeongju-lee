@@ -89,25 +89,32 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/et_sign_in_pwd" />
 
-        <Button
-            android:id="@+id/btn_login"
+        <androidx.constraintlayout.helper.widget.Flow
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="40dp"
             android:layout_marginTop="20dp"
-            android:enabled="@{vm.inputId.length() > 0 &amp;&amp; vm.inputPwd.length() > 0}"
-            android:onClick="@{()->vm.loginOnClick()}"
-            android:text="@string/login"
+            android:orientation="horizontal"
+            app:constraint_referenced_ids="btn_login,btn_sign_up"
+            app:flow_horizontalGap="12dp"
+            app:flow_horizontalStyle="packed"
             app:layout_constraintTop_toBottomOf="@id/cb_auto_login" />
 
         <Button
-            android:id="@+id/btn_sign_up"
-            android:layout_width="match_parent"
+            android:id="@+id/btn_login"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="40dp"
-            android:layout_marginTop="20dp"
-            android:text="@string/sign_up"
-            app:layout_constraintTop_toBottomOf="@id/btn_login" />
+            android:enabled="@{vm.inputId.length() > 0 &amp;&amp; vm.inputPwd.length() > 0}"
+            android:onClick="@{()->vm.loginOnClick()}"
+            android:text="@string/login"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toEndOf="@id/btn_sign_up" />
+
+        <Button
+            android:id="@+id/btn_sign_up"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/sign_up" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
