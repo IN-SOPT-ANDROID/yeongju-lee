@@ -16,7 +16,6 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(R.layout.activity_sig
         super.onCreate(savedInstanceState)
         binding.vm = signUpViewModel
         observeSuccessSignUp()
-        initBackBtnOnClickListener()
     }
 
     private fun observeSuccessSignUp() {
@@ -37,12 +36,6 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(R.layout.activity_sig
         )
         toSignIn.putExtra(USER_INFO, userInfo)
         setResult(RESULT_OK, toSignIn)
-    }
-
-    private fun initBackBtnOnClickListener() {
-        binding.ivSignUpBack.setOnClickListener {
-            finish()
-        }
     }
 
     companion object {

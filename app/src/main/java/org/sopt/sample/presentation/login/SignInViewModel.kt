@@ -30,8 +30,6 @@ class SignInViewModel @Inject constructor(
             if (saveUserInfo.getAutoLogin()) {
                 _userInfo.value = saveUserInfo.getUserInfo()
                 _successLogin.value = true
-            } else {
-                _successLogin.value = false
             }
             Log.d(
                 "asdf",

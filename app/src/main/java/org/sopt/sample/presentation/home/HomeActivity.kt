@@ -8,12 +8,11 @@ import org.sopt.sample.R
 import org.sopt.sample.databinding.ActivityHomeBinding
 import org.sopt.sample.entity.User
 import org.sopt.sample.presentation.login.SignInActivity
-import org.sopt.sample.util.SaveUserInfo
 import org.sopt.sample.util.base.BaseActivity
+import org.sopt.sample.util.extensions.showToast
 
 @AndroidEntryPoint
 class HomeActivity : BaseActivity<ActivityHomeBinding>(R.layout.activity_home) {
-    private lateinit var saveUserInfo: SaveUserInfo
     private val homeViewModel: HomeViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +30,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(R.layout.activity_home) {
     private fun observeLogout() {
         homeViewModel.logout.observe(this) { logout ->
             if (logout) {
+                showToast(getString(R.string.success_logout))
                 val toLogin = Intent(this, SignInActivity::class.java)
                 startActivity(toLogin)
                 finish()

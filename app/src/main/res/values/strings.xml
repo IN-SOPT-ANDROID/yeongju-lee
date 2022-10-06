@@ -18,8 +18,9 @@
     <string name="sign_up_complete">회원가입 완료</string>
     <string name="check_your_input">입력한 정보를 확인해주세요.</string>
     <string name="complete_sign_up">회원가입이 완료되었습니다.</string>
-    <string name="success_login">로그인에 성공하셨습니다.</string>
+    <string name="success_login">%s님 안녕하세요!</string>
     <string name="fail_login">다시 입력하세요.</string>
+    <string name="success_logout">로그아웃 되었습니다.</string>
     <string name="auto_login">자동로그인</string>
 
     <string name="home_id_is">ID : %s</string>

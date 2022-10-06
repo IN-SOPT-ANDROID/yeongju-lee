@@ -33,8 +33,8 @@ class SignInActivity : BaseActivity<ActivitySignInBinding>(R.layout.activity_sig
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
                 if (result.resultCode == RESULT_OK) {
                     userInfo = result.data?.getSerializableExtra(USER_INFO) as User
-                    signInViewModel.setUserInfo(userInfo)
                 }
+                signInViewModel.setUserInfo(userInfo)
                 binding.root.showSnackbar(getString(R.string.complete_sign_up))
             }
     }
@@ -52,9 +52,9 @@ class SignInActivity : BaseActivity<ActivitySignInBinding>(R.layout.activity_sig
     private fun observeSucessLogin() {
         signInViewModel.successLogin.observe(this) { success ->
             if (success) {
-                showToast(getString(R.string.success_login))
+                showToast(getString(R.string.success_login, signInViewModel.userInfo.value!!.id))
                 val toHome = Intent(this, HomeActivity::class.java)
-                toHome.putExtra("userInfo", signInViewModel.userInfo.value)
+                toHome.putExtra(USER_INFO, signInViewModel.userInfo.value)
                 startActivity(toHome)
                 finish()
             } else showToast(getString(R.string.fail_login))
