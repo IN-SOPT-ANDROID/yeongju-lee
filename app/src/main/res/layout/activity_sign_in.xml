@@ -49,7 +49,7 @@
             android:layout_marginTop="20dp"
             android:hint="@string/sign_in_id_hint"
             android:inputType="text"
-            android:text="@={vm.id}"
+            android:text="@={vm.inputId}"
             app:layout_constraintTop_toBottomOf="@id/tv_sign_in_id" />
 
         <TextView
@@ -72,7 +72,7 @@
             android:layout_marginTop="20dp"
             android:hint="@string/sign_in_pwd_hint"
             android:inputType="textPassword"
-            android:text="@={vm.pwd}"
+            android:text="@={vm.inputPwd}"
             app:layout_constraintTop_toBottomOf="@id/tv_sign_in_pwd" />
 
         <CheckBox
@@ -95,7 +95,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="40dp"
             android:layout_marginTop="20dp"
-            android:enabled="@{vm.id.length() > 0 &amp;&amp; vm.pwd.length() > 0}"
+            android:enabled="@{vm.inputId.length() > 0 &amp;&amp; vm.inputPwd.length() > 0}"
             android:onClick="@{()->vm.loginOnClick()}"
             android:text="@string/login"
             app:layout_constraintTop_toBottomOf="@id/cb_auto_login" />

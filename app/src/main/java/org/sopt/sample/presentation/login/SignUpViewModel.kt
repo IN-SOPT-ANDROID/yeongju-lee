@@ -7,9 +7,9 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 
 class SignUpViewModel : ViewModel() {
-    val id = MutableLiveData<String>()
-    val pwd = MutableLiveData<String>()
-    val mbti = MutableLiveData<String>()
+    val inputId = MutableLiveData<String>()
+    val inputPwd = MutableLiveData<String>()
+    val inputMbti = MutableLiveData<String>()
 
     private val _successSignUp = MutableLiveData<Boolean>()
     val successSignUp: LiveData<Boolean> = _successSignUp
@@ -17,7 +17,7 @@ class SignUpViewModel : ViewModel() {
     fun signUpOnClick() {
         viewModelScope.launch {
             _successSignUp.value =
-                id.value?.length in 6..10 && pwd.value?.length in 8..12 && mbti.value?.length == 4
+                inputId.value?.length in 6..10 && inputPwd.value?.length in 8..12 && inputMbti.value?.length == 4
         }
     }
 }

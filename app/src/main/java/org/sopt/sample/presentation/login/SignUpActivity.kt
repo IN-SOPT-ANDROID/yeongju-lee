@@ -31,11 +31,11 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(R.layout.activity_sig
     private fun putUserInfo() {
         val toSignIn = Intent(this, SignInActivity::class.java)
         val userInfo = User(
-            id = signUpViewModel.id.value,
-            pwd = signUpViewModel.pwd.value,
-            mbti = signUpViewModel.mbti.value
+            id = signUpViewModel.inputId.value,
+            pwd = signUpViewModel.inputPwd.value,
+            mbti = signUpViewModel.inputMbti.value
         )
-        toSignIn.putExtra("userInfo", userInfo)
+        toSignIn.putExtra(USER_INFO, userInfo)
         setResult(RESULT_OK, toSignIn)
     }
 
@@ -43,5 +43,9 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(R.layout.activity_sig
         binding.ivSignUpBack.setOnClickListener {
             finish()
         }
+    }
+
+    companion object {
+        const val USER_INFO = "userInfo"
     }
 }
