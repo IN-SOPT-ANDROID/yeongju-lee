@@ -1,4 +1,4 @@
-package org.sopt.sample.util
+package org.sopt.sample.util.extensions
 
 import android.content.Context
 import android.widget.Toast

@@ -1,9 +1,6 @@
 package org.sopt.sample.presentation.login
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import kotlinx.coroutines.launch
 import org.sopt.sample.entity.User
 
@@ -13,6 +10,7 @@ class SignInViewModel : ViewModel() {
 
     val id = MutableLiveData("")
     val pwd = MutableLiveData("")
+    val isAutoLogin = MutableLiveData<Boolean>()
 
     private val _successLogin = MutableLiveData<Boolean>()
     val successLogin: LiveData<Boolean> = _successLogin

@@ -16,13 +16,25 @@
         android:layout_height="match_parent"
         tools:context=".presentation.login.SignUpActivity">
 
+        <ImageView
+            android:id="@+id/iv_sign_up_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:padding="14dp"
+            android:src="@drawable/ic_back"
+            app:layout_constraintBottom_toBottomOf="@id/tv_sign_up_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_sign_up_title" />
+
         <TextView
             android:id="@+id/tv_sign_up_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:text="@string/sign_up"
-            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -33,8 +45,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="30dp"
             android:text="@string/id"
+            android:textColor="@color/black"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_sign_up_title" />
@@ -57,6 +70,7 @@
             android:layout_marginStart="40dp"
             android:layout_marginTop="24dp"
             android:text="@string/pwd"
+            android:textColor="@color/black"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/et_sign_up_id" />
@@ -79,6 +93,7 @@
             android:layout_marginStart="40dp"
             android:layout_marginTop="24dp"
             android:text="@string/mbti"
+            android:textColor="@color/black"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/et_sign_up_pwd" />
@@ -101,8 +116,9 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="40dp"
             android:layout_marginTop="20dp"
+            android:enabled="@{vm.id.length() > 0 &amp;&amp; vm.pwd.length() > 0 &amp;&amp; vm.mbti.length() > 0}"
             android:onClick="@{()->vm.signUpOnClick()}"
-            android:text="@string/complete_sign_up"
+            android:text="@string/sign_up_complete"
             app:layout_constraintTop_toBottomOf="@id/et_sign_up_mbti" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

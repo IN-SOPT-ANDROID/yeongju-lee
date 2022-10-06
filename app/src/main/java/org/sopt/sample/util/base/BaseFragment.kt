@@ -1,4 +1,4 @@
-package org.sopt.sample.util.binding
+package org.sopt.sample.util.base
 
 import android.os.Bundle
 import android.view.LayoutInflater
