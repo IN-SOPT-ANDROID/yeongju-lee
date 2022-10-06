@@ -1,6 +1,5 @@
 package org.sopt.sample.presentation.login
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -31,10 +30,6 @@ class SignInViewModel @Inject constructor(
                 _userInfo.value = saveUserInfo.getUserInfo()
                 _successLogin.value = true
             }
-            Log.d(
-                "asdf",
-                "SignInViewModel, 자동로그인:${saveUserInfo.getAutoLogin()}, 유저정보:${saveUserInfo.getUserInfo()}"
-            )
         }
     }
 
