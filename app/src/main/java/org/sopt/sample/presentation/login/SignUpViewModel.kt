@@ -17,7 +17,7 @@ class SignUpViewModel : ViewModel() {
     fun signUpOnClick() {
         viewModelScope.launch {
             _successSignUp.value =
-                inputId.value?.length in 6..10 && inputPwd.value?.length in 8..12 && inputMbti.value?.length == 4
+                (inputId.value?.length in 6..10) && (inputPwd.value?.length in 8..12) && (inputMbti.value?.length == 4)
         }
     }
 }
