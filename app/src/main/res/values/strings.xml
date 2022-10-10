@@ -18,6 +18,8 @@
     <string name="home_expressed_name">이름 : %s</string>
     <string name="home_expressed_mbti">MBTI : %s</string>
 
+    <string name="header_title">이영주의 레포지토리</string>
+
     <!-- bottom navigation -->
     <string name="home">홈</string>
     <string name="gallery">갤러리</string>
