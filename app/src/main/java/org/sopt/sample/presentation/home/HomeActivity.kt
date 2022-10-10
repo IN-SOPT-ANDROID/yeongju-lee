@@ -1,7 +1,6 @@
 package org.sopt.sample.presentation.home
 
 import android.os.Bundle
-import android.widget.ScrollView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import org.sopt.sample.R
