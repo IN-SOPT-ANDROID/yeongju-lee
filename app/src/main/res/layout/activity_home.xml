@@ -6,12 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".presentation.home.HomeActivity">
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fc_home"
+    <ScrollView
+        android:id="@+id/sv_home"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@id/bot_nav_home"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fc_home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </ScrollView>
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bot_nav_home"

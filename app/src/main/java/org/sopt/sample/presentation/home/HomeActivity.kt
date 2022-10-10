@@ -1,6 +1,7 @@
 package org.sopt.sample.presentation.home
 
 import android.os.Bundle
+import android.widget.ScrollView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import org.sopt.sample.R
@@ -25,15 +26,16 @@ class HomeActivity : AppCompatActivity() {
             when (it.itemId) {
                 R.id.menu_home -> {
                     changeFragment(HomeFragment())
+                    binding.svHome.fullScroll(ScrollView.FOCUS_UP)
                     return@setOnItemReselectedListener true
                 }
                 R.id.menu_gallery -> {
                     changeFragment(GalleryFragment())
-                    return@setOnItemReselectedListener true
+                    return@setOnItemReselectedListener false
                 }
                 R.id.menu_search -> {
                     changeFragment(SearchFragment())
-                    return@setOnItemReselectedListener true
+                    return@setOnItemReselectedListener false
                 }
                 else -> error("item id :${it.itemId}) is cannot be selected")
             }
