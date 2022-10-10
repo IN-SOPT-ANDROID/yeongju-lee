@@ -1,7 +1,9 @@
 package org.sopt.sample.presentation.home
 
 import android.os.Bundle
+import android.widget.ScrollView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import org.sopt.sample.R
 import org.sopt.sample.databinding.ActivityHomeBinding
 import org.sopt.sample.presentation.home.gallery.GalleryFragment
@@ -19,23 +21,29 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun initTransactionEvent() {
-        supportFragmentManager.beginTransaction().add(R.id.fc_home, HomeFragment()).commit()
-        binding.botNavHome.setOnItemSelectedListener {
-            val transaction = supportFragmentManager.beginTransaction()
+        changeFragment(HomeFragment())
+        binding.botNavHome.setOnItemSelectedListener setOnItemReselectedListener@{
             when (it.itemId) {
-                R.id.menu_home -> transaction.replace(R.id.fc_home, HomeFragment())
-                R.id.menu_gallery -> transaction.replace(
-                    R.id.fc_home,
-                    GalleryFragment()
-                )
-                R.id.menu_search -> transaction.replace(
-                    R.id.fc_home,
-                    SearchFragment()
-                )
+                R.id.menu_home -> {
+                    changeFragment(HomeFragment())
+                    return@setOnItemReselectedListener true
+                }
+                R.id.menu_gallery -> {
+                    changeFragment(GalleryFragment())
+                    return@setOnItemReselectedListener true
+                }
+                R.id.menu_search -> {
+                    changeFragment(SearchFragment())
+                    return@setOnItemReselectedListener true
+                }
                 else -> error("item id :${it.itemId}) is cannot be selected")
             }
-            transaction.commit()
-            true
         }
+    }
+
+    private fun changeFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fc_home, fragment)
+            .commit()
     }
 }
