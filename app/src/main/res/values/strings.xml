@@ -15,7 +15,7 @@
     <string name="sign_up_pwd_hint">8글자 이상 12글자 이하</string>
     <string name="complete_sign_up">회원가입 완료</string>
 
-    <string name="home_name_is">이름 : %s</string>
-    <string name="home_mbti_is">MBTI : %s</string>
+    <string name="home_expressed_name">이름 : %s</string>
+    <string name="home_expressed_mbti">MBTI : %s</string>
 
 </resources>

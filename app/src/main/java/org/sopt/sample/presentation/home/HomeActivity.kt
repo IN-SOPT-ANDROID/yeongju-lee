@@ -18,7 +18,7 @@ class HomeActivity : AppCompatActivity() {
     private fun getUserInfo() {
         val userId = intent.getStringExtra("userId")
         val userMbti = intent.getStringExtra("userMbti")
-        binding.tvHomeName.text = getString(R.string.home_name_is, userId)
-        binding.tvHomeMbti.text = getString(R.string.home_mbti_is, userMbti)
+        binding.tvHomeName.text = getString(R.string.home_expressed_name, userId)
+        binding.tvHomeMbti.text = getString(R.string.home_expressed_mbti, userMbti)
     }
 }
