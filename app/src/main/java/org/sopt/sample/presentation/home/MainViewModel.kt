@@ -11,7 +11,7 @@ import org.sopt.sample.util.SaveUserInfo
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(
+class MainViewModel @Inject constructor(
     private val saveUserInfo: SaveUserInfo
 ) : ViewModel() {
     val id = MutableLiveData<String>()
