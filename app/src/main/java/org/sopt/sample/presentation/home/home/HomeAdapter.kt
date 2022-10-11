@@ -9,7 +9,8 @@ import org.sopt.sample.databinding.ItemHomeBodyBinding
 import org.sopt.sample.databinding.ItemHomeHeaderBinding
 import org.sopt.sample.entity.RepoData
 
-class HomeAdapter : ListAdapter<RepoData, RecyclerView.ViewHolder>(homeDiffUtil) {
+class HomeAdapter() : ListAdapter<RepoData, RecyclerView.ViewHolder>(homeDiffUtil) {
+
     private lateinit var itemHomeHeaderBinding: ItemHomeHeaderBinding
     private lateinit var itemHomeBodyBinding: ItemHomeBodyBinding
 
@@ -50,7 +51,7 @@ class HomeAdapter : ListAdapter<RepoData, RecyclerView.ViewHolder>(homeDiffUtil)
         if (holder is BodyViewHolder) {
             holder.onBind(getItem(position))
         } else if (holder is HeaderViewHolder) {
-            holder
+            holder.onBind()
         }
     }
 
@@ -58,15 +59,16 @@ class HomeAdapter : ListAdapter<RepoData, RecyclerView.ViewHolder>(homeDiffUtil)
         private val binding: ItemHomeBodyBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun onBind(data: RepoData) {
-            binding.ivItemHomeProfile.setImageResource(data.img)
-            binding.tvItemHomeRepo.text = data.repo
-            binding.tvItemHomeName.text = data.name
+            binding.data = data
         }
     }
 
     class HeaderViewHolder(
         private val binding: ItemHomeHeaderBinding
-    ) : RecyclerView.ViewHolder(binding.root)
+    ) : RecyclerView.ViewHolder(binding.root) {
+        fun onBind() {
+        }
+    }
 
     companion object {
         private val homeDiffUtil = object : DiffUtil.ItemCallback<RepoData>() {

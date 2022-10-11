@@ -5,10 +5,6 @@
 
     <data>
 
-        <variable
-            name="vm"
-            type="org.sopt.sample.presentation.home.MainViewModel" />
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

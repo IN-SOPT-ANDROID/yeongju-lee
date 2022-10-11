@@ -22,6 +22,7 @@
     <string name="fail_login">다시 입력하세요.</string>
     <string name="success_logout">로그아웃 되었습니다.</string>
     <string name="auto_login">자동로그인</string>
+    <string name="logout">Logout</string>
 
     <string name="home_expressed_name">이름 : %s</string>
     <string name="home_expressed_mbti">MBTI : %s</string>

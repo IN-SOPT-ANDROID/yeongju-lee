@@ -6,7 +6,7 @@
     <data>
 
         <variable
-            name="vm"
+            name="data"
             type="org.sopt.sample.entity.RepoData" />
 
     </data>
@@ -20,7 +20,7 @@
             android:id="@+id/iv_item_home_profile"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:src="@{vm.img}"
+            android:src="@{data.img}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintStart_toStartOf="parent"
@@ -34,7 +34,7 @@
             android:layout_marginTop="12dp"
             android:layout_marginBottom="12dp"
             android:maxLines="1"
-            android:text="@{vm.repo}"
+            android:text="@{data.repo}"
             android:textColor="@color/black"
             app:layout_constraintBottom_toTopOf="@id/tv_item_home_name"
             app:layout_constraintEnd_toEndOf="parent"
@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
             android:maxLines="1"
-            android:text="@{vm.name}"
+            android:text="@{data.name}"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
