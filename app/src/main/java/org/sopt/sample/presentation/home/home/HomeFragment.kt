@@ -33,6 +33,7 @@ class HomeFragment : Fragment() {
     private fun initRepoData() {
         homeAdapter.repoList.addAll(
             listOf(
+                RepoData(0, "", ""),
                 RepoData(R.drawable.img_profile, "Android", "Yeongju Lee"),
                 RepoData(R.drawable.img_profile, "Server", "Daehwan Gye"),
                 RepoData(R.drawable.img_profile, "IOS", "Hajeong Kim"),
