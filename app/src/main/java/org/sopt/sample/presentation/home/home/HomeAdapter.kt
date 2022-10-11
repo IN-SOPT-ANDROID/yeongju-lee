@@ -47,8 +47,6 @@ class HomeAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is BodyViewHolder) {
             holder.onBind(repoList[position])
-        } else if (holder is HeaderViewHolder) {
-            holder
         }
     }
 
