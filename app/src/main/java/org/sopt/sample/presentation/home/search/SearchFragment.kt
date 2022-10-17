@@ -10,7 +10,7 @@ import org.sopt.sample.databinding.FragmentSearchBinding
 class SearchFragment : Fragment() {
     private var _binding: FragmentSearchBinding? = null
     private val binding: FragmentSearchBinding
-        get() = requireNotNull(_binding)
+        get() = requireNotNull(_binding) ?: throw IllegalArgumentException("fragment is null")
 
     override fun onCreateView(
         inflater: LayoutInflater,

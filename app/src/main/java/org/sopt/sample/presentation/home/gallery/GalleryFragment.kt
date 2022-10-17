@@ -10,7 +10,7 @@ import org.sopt.sample.databinding.FragmentGalleryBinding
 class GalleryFragment : Fragment() {
     private var _binding: FragmentGalleryBinding? = null
     private val binding: FragmentGalleryBinding
-        get() = requireNotNull(_binding)
+        get() = requireNotNull(_binding) ?: throw IllegalArgumentException("fragment is null")
 
     override fun onCreateView(
         inflater: LayoutInflater,

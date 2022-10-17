@@ -11,7 +11,7 @@ import org.sopt.sample.databinding.FragmentHomeBinding
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding: FragmentHomeBinding
-        get() = requireNotNull(_binding)
+        get() = requireNotNull(_binding) ?: throw IllegalArgumentException("fragment is null")
     private lateinit var homeAdapter: HomeAdapter
 
     override fun onCreateView(
