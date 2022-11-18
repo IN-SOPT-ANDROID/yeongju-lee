@@ -5,8 +5,8 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import org.sopt.sample.R
-import org.sopt.sample.databinding.ActivityHomeBinding
 import org.sopt.sample.data.entity.User
+import org.sopt.sample.databinding.ActivityHomeBinding
 import org.sopt.sample.presentation.login.SignInActivity
 import org.sopt.sample.util.base.BaseActivity
 import org.sopt.sample.util.extensions.showToast

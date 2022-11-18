@@ -1,9 +1,13 @@
 package org.sopt.sample.data.entity
 
-import java.io.Serializable
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class User(
-    var id: String?,
-    var pwd: String?,
-    var mbti: String?
-) : Serializable
+    val id: Int,
+    val name: String,
+    val profileImage: String?,
+    val bio: String?,
+    val email: String,
+    val password: String
+)
