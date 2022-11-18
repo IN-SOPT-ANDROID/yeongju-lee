@@ -1,6 +1,5 @@
 package org.sopt.sample.presentation.login
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -48,10 +47,8 @@ class SignUpViewModel @Inject constructor(
                 requireNotNull(inputName.value)
             ).onSuccess {
                 _successSignUp.value = true
-                Log.e("asdf", it.message + it.newUser)
-            }.onFailure { throwable ->
+            }.onFailure {
                 _successSignUp.value = false
-                Log.e("asdf", throwable.message.toString())
             }
         }
     }

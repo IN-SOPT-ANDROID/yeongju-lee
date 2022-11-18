@@ -5,12 +5,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import org.sopt.sample.data.entity.Follower
+import org.sopt.sample.data.entity.User
 import org.sopt.sample.databinding.ItemHomeBodyBinding
 import org.sopt.sample.databinding.ItemHomeHeaderBinding
 import org.sopt.sample.util.extensions.ItemDiffCallback
 
 class HomeAdapter(
-    //온클릭 추가
+    private val onClickLogout: () -> Unit,
+    private val user: User
 ) : ListAdapter<Follower, RecyclerView.ViewHolder>(homeDiffUtil) {
 
     private lateinit var itemHomeHeaderBinding: ItemHomeHeaderBinding
@@ -32,7 +34,7 @@ class HomeAdapter(
                         parent,
                         false
                     )
-                HeaderViewHolder(itemHomeHeaderBinding)
+                HeaderViewHolder(itemHomeHeaderBinding, onClickLogout, user)
             }
             BODY -> {
                 itemHomeBodyBinding =
@@ -52,7 +54,7 @@ class HomeAdapter(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val currentPosition = getItem(position)
         when (holder) {
-            is HeaderViewHolder -> Unit
+            is HeaderViewHolder -> holder.onBind()
             is BodyViewHolder -> if (currentPosition != null) holder.onBind(currentPosition)
         }
     }
@@ -65,7 +67,18 @@ class HomeAdapter(
         }
     }
 
-    class HeaderViewHolder(binding: ItemHomeHeaderBinding) : RecyclerView.ViewHolder(binding.root)
+    class HeaderViewHolder(
+        private val binding: ItemHomeHeaderBinding,
+        private val onClickLogout: () -> Unit,
+        private val user: User
+    ) : RecyclerView.ViewHolder(binding.root) {
+        fun onBind() {
+            binding.btnLogout.setOnClickListener {
+                onClickLogout()
+            }
+            binding.data = user
+        }
+    }
 
     companion object {
         private val homeDiffUtil = ItemDiffCallback<Follower>(

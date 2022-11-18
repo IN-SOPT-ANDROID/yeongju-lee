@@ -19,23 +19,22 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initAdapter()
-        initLogoutObserve()
     }
 
-    private fun initLogoutObserve() {
-        homeViewModel.logout.observe(viewLifecycleOwner) { logout ->
-            if (logout) {
-                requireActivity().showToast(getString(R.string.success_logout))
-                val toLogin = Intent(requireActivity(), SignInActivity::class.java)
-                startActivity(toLogin)
-                requireActivity().finish()
-            }
-        }
+    private fun onClickLogout() {
+        homeViewModel.logout()
+        requireActivity().showToast(getString(R.string.success_logout))
+        val toLogin = Intent(requireActivity(), SignInActivity::class.java)
+        startActivity(toLogin)
+        requireActivity().finish()
     }
 
     private fun initAdapter() {
         homeViewModel.followerInfo.observe(viewLifecycleOwner) { follower ->
-            homeAdapter = HomeAdapter()
+            homeAdapter = HomeAdapter(
+                onClickLogout = ::onClickLogout,
+                requireNotNull(homeViewModel.userInfo.value)
+            )
             binding.rvHome.adapter = homeAdapter
             homeAdapter.submitList(follower)
         }

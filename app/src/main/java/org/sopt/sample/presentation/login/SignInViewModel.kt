@@ -1,6 +1,5 @@
 package org.sopt.sample.presentation.login
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -45,12 +44,8 @@ class SignInViewModel @Inject constructor(
                     authRepository.setUserInfo(response.result)
                     _successLogin.value = true
                     _userInfo.value = response.result
-                    Log.e("asdf", response.message + response.result)
-                    Log.e("asdf", authRepository.getAutoLogin().toString())
-                    Log.e("asdf", authRepository.getUserInfo().toString())
-                }.onFailure { throwable ->
+                }.onFailure {
                     _successLogin.value = false
-                    Log.e("asdf", throwable.message.toString())
                 }
         }
     }

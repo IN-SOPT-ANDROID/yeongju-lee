@@ -24,9 +24,6 @@ class HomeViewModel @Inject constructor(
     private val _followerInfo = MutableLiveData<List<Follower>>()
     val followerInfo: LiveData<List<Follower>> = _followerInfo
 
-    private val _logout = MutableLiveData<Boolean>()
-    val logout: LiveData<Boolean> = _logout
-
     init {
         getFollower()
     }
@@ -35,16 +32,14 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch {
             reqResRepository.getFollower()
                 .onSuccess { response ->
-                    _followerInfo.value = response.data
                     _userInfo.value = authRepository.getUserInfo()
-                    Log.e("asdf", authRepository.getUserInfo().toString())
+                    _followerInfo.value = response.data
                     Log.e("asdf", _userInfo.value.toString())
-                    Log.e("asdf", response.data.toString())
                 }
         }
     }
 
-    fun logoutOnClick() {
+    fun logout() {
         viewModelScope.launch {
             authRepository.setAutoLogin(isAutoLogin = false)
             authRepository.setUserInfo(
@@ -57,7 +52,6 @@ class HomeViewModel @Inject constructor(
                     password = ""
                 )
             )
-            _logout.value = true
         }
     }
 }
