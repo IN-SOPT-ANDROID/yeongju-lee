@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.google.gson.Gson
 import dagger.hilt.android.qualifiers.ApplicationContext
-import org.sopt.sample.entity.User
+import org.sopt.sample.data.entity.User
 import javax.inject.Inject
 import javax.inject.Singleton
 

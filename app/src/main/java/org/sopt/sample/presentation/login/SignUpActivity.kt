@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import org.sopt.sample.R
 import org.sopt.sample.databinding.ActivitySignUpBinding
-import org.sopt.sample.entity.User
+import org.sopt.sample.data.entity.User
 import org.sopt.sample.util.base.BaseActivity
 import org.sopt.sample.util.extensions.showSnackbar
 

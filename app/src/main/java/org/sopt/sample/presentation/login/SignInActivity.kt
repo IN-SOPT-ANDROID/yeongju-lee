@@ -8,7 +8,7 @@ import androidx.activity.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import org.sopt.sample.R
 import org.sopt.sample.databinding.ActivitySignInBinding
-import org.sopt.sample.entity.User
+import org.sopt.sample.data.entity.User
 import org.sopt.sample.presentation.home.HomeActivity
 import org.sopt.sample.util.base.BaseActivity
 import org.sopt.sample.util.extensions.showSnackbar

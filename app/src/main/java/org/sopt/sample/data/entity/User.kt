@@ -1,4 +1,4 @@
-package org.sopt.sample.entity
+package org.sopt.sample.data.entity
 
 import java.io.Serializable
 

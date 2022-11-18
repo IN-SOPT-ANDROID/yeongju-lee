@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import org.sopt.sample.entity.User
+import org.sopt.sample.data.entity.User
 import org.sopt.sample.util.SaveUserInfo
 import javax.inject.Inject
 
