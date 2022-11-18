@@ -1,21 +1,30 @@
 <resources>
-    <string name="app_name">YeongJu</string>
+    <string name="app_name">InSoptAndroid</string>
+    <!-- Util -->
+    <string name="binding_error">Binding not initialized to reference the view.</string>
 
     <!-- Sign In & Sign Up-->
     <string name="sign_in_title">Welcome to SOPT</string>
     <string name="id">ID</string>
     <string name="pwd">비밀번호</string>
     <string name="login">Login</string>
-    <string name="sign_up">SIGNUP</string>
+    <string name="sign_up">회원가입</string>
     <string name="mbti">MBTI</string>
     <string name="sign_in_id_hint">아이디를 입력하세요.</string>
     <string name="sign_in_pwd_hint">비밀번호를 입력하세요.</string>
     <string name="mbti_hint">MBTI를 입력하세요.</string>
     <string name="sign_up_id_hint">6글자 이상 10글자 이하</string>
     <string name="sign_up_pwd_hint">8글자 이상 12글자 이하</string>
-    <string name="complete_sign_up">회원가입 완료</string>
+    <string name="sign_up_complete">회원가입 완료</string>
+    <string name="check_your_input">입력한 정보를 확인해주세요.</string>
+    <string name="complete_sign_up">회원가입이 완료되었습니다.</string>
+    <string name="success_login">%s님 안녕하세요!</string>
+    <string name="fail_login">다시 입력하세요.</string>
+    <string name="success_logout">로그아웃 되었습니다.</string>
+    <string name="auto_login">자동로그인</string>
 
-    <string name="home_expressed_name">이름 : %s</string>
-    <string name="home_expressed_mbti">MBTI : %s</string>
+    <string name="home_id_is">ID : %s</string>
+    <string name="home_mbti_is">MBTI : %s</string>
+    <string name="logout">Logout</string>
 
 </resources>

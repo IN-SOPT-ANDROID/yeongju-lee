@@ -2,45 +2,43 @@ package org.sopt.sample.presentation.login
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.snackbar.Snackbar
+import androidx.activity.viewModels
+import org.sopt.sample.R
 import org.sopt.sample.databinding.ActivitySignUpBinding
+import org.sopt.sample.entity.User
+import org.sopt.sample.util.base.BaseActivity
+import org.sopt.sample.util.extensions.showSnackbar
 
-class SignUpActivity : AppCompatActivity() {
-    private lateinit var binding: ActivitySignUpBinding
+class SignUpActivity : BaseActivity<ActivitySignUpBinding>(R.layout.activity_sign_up) {
+    private val signUpViewModel: SignUpViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivitySignUpBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        initSignUpBtnOnClickListener()
+        binding.vm = signUpViewModel
+        observeSuccessSignUp()
     }
 
-    private fun initSignUpBtnOnClickListener() {
-        binding.btnSignUp.setOnClickListener {
-            if (checkId() && checkPwd() && checkMbti()) {
+    private fun observeSuccessSignUp() {
+        signUpViewModel.successSignUp.observe(this) { success ->
+            if (success) {
                 putUserInfo()
                 finish()
-            } else Snackbar.make(binding.root, "입력한 정보를 확인해주세요.", Snackbar.LENGTH_SHORT).show()
+            } else binding.root.showSnackbar(getString(R.string.check_your_input))
         }
     }
 
     private fun putUserInfo() {
-        val intent = Intent(this, SignInActivity::class.java)
-        intent.putExtra("userId", binding.etSignUpId.text.toString())
-        intent.putExtra("userPwd", binding.etSignUpPwd.text.toString())
-        intent.putExtra("userMbti", binding.etSignUpMbti.text.toString())
-        setResult(RESULT_OK, intent)
+        val toSignIn = Intent(this, SignInActivity::class.java)
+        val userInfo = User(
+            id = signUpViewModel.inputId.value,
+            pwd = signUpViewModel.inputPwd.value,
+            mbti = signUpViewModel.inputMbti.value
+        )
+        toSignIn.putExtra(USER_INFO, userInfo)
+        setResult(RESULT_OK, toSignIn)
     }
 
-    private fun checkId(): Boolean {
-        return binding.etSignUpId.text.length in 6..10
-    }
-
-    private fun checkPwd(): Boolean {
-        return binding.etSignUpPwd.text.length in 8..12
-    }
-
-    private fun checkMbti(): Boolean {
-        return binding.etSignUpMbti.text.length == 4
+    companion object {
+        const val USER_INFO = "userInfo"
     }
 }
