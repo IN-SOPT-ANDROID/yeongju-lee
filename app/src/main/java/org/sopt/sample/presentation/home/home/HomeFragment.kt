@@ -6,10 +6,8 @@ import android.view.View
 import androidx.fragment.app.activityViewModels
 import dagger.hilt.android.AndroidEntryPoint
 import org.sopt.sample.R
-import org.sopt.sample.data.entity.User
 import org.sopt.sample.databinding.FragmentHomeBinding
 import org.sopt.sample.presentation.login.SignInActivity
-import org.sopt.sample.presentation.login.SignInActivity.Companion.USER_INFO
 import org.sopt.sample.util.binding.BindingFragment
 import org.sopt.sample.util.extensions.showToast
 
@@ -36,8 +34,10 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
     }
 
     private fun initAdapter() {
-        homeAdapter = HomeAdapter()
-        binding.rvHome.adapter = homeAdapter
-        homeAdapter.submitList(homeViewModel.followerInfo.value)
+        homeViewModel.followerInfo.observe(viewLifecycleOwner) { follower ->
+            homeAdapter = HomeAdapter()
+            binding.rvHome.adapter = homeAdapter
+            homeAdapter.submitList(follower)
+        }
     }
 }

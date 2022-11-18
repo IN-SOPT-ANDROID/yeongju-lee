@@ -9,7 +9,9 @@ import org.sopt.sample.databinding.ItemHomeBodyBinding
 import org.sopt.sample.databinding.ItemHomeHeaderBinding
 import org.sopt.sample.util.extensions.ItemDiffCallback
 
-class HomeAdapter() : ListAdapter<Follower, RecyclerView.ViewHolder>(homeDiffUtil) {
+class HomeAdapter(
+    //온클릭 추가
+) : ListAdapter<Follower, RecyclerView.ViewHolder>(homeDiffUtil) {
 
     private lateinit var itemHomeHeaderBinding: ItemHomeHeaderBinding
     private lateinit var itemHomeBodyBinding: ItemHomeBodyBinding

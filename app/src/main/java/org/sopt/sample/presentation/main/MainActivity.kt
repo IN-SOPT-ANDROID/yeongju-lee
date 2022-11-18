@@ -1,4 +1,4 @@
-package org.sopt.sample.presentation.home
+package org.sopt.sample.presentation.main
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -19,8 +19,8 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
 
     private fun initTransactionEvent() {
         changeFragment(HomeFragment())
-        binding.botNavHome.setOnItemSelectedListener setOnItemReselectedListener@{
-            when (it.itemId) {
+        binding.botNavHome.setOnItemSelectedListener setOnItemReselectedListener@{ menu ->
+            when (menu.itemId) {
                 R.id.menu_home -> {
                     changeFragment(HomeFragment())
                     return@setOnItemReselectedListener true
@@ -33,7 +33,7 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
                     changeFragment(SearchFragment())
                     return@setOnItemReselectedListener true
                 }
-                else -> error("item id :${it.itemId}) is cannot be selected")
+                else -> error("item id :${menu.itemId}) is cannot be selected")
             }
         }
     }

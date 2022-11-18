@@ -46,6 +46,8 @@ class SignInViewModel @Inject constructor(
                     _successLogin.value = true
                     _userInfo.value = response.result
                     Log.e("asdf", response.message + response.result)
+                    Log.e("asdf", authRepository.getAutoLogin().toString())
+                    Log.e("asdf", authRepository.getUserInfo().toString())
                 }.onFailure { throwable ->
                     _successLogin.value = false
                     Log.e("asdf", throwable.message.toString())

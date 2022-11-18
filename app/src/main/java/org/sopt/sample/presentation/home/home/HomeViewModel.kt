@@ -37,6 +37,8 @@ class HomeViewModel @Inject constructor(
                 .onSuccess { response ->
                     _followerInfo.value = response.data
                     _userInfo.value = authRepository.getUserInfo()
+                    Log.e("asdf", authRepository.getUserInfo().toString())
+                    Log.e("asdf", _userInfo.value.toString())
                     Log.e("asdf", response.data.toString())
                 }
         }

@@ -6,7 +6,7 @@ import androidx.activity.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import org.sopt.sample.R
 import org.sopt.sample.databinding.ActivitySignInBinding
-import org.sopt.sample.presentation.home.MainActivity
+import org.sopt.sample.presentation.main.MainActivity
 import org.sopt.sample.util.binding.BindingActivity
 import org.sopt.sample.util.extensions.showToast
 
