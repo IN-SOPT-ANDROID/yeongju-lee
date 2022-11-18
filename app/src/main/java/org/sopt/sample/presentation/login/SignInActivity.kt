@@ -53,7 +53,7 @@ class SignInActivity : BaseActivity<ActivitySignInBinding>(R.layout.activity_sig
         signInViewModel.successLogin.observe(this) { success ->
             if (success) {
                 showToast(getString(R.string.success_login, signInViewModel.userInfo.value!!.id))
-                val toHome = Intent(this, HomeActivity::class.java)
+                val toHome = Intent(this, MainActivity::class.java)
                 toHome.putExtra(USER_INFO, signInViewModel.userInfo.value)
                 startActivity(toHome)
                 finish()
