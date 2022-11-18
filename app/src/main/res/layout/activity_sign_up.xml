@@ -81,7 +81,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
             android:layout_marginTop="24dp"
-            android:text="@string/mbti"
+            android:text="@string/name"
             android:textColor="@color/black"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -93,10 +93,10 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="40dp"
             android:layout_marginTop="20dp"
-            android:hint="@string/mbti_hint"
+            android:hint="@string/name_hint"
             android:inputType="textCapCharacters"
             android:maxLength="4"
-            android:text="@={vm.inputMbti}"
+            android:text="@={vm.inputName}"
             app:layout_constraintTop_toBottomOf="@id/tv_sign_up_mbti" />
 
         <Button
@@ -105,7 +105,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="40dp"
             android:layout_marginTop="20dp"
-            android:enabled="@{vm.inputId.length() > 0 &amp;&amp; vm.inputPwd.length() > 0 &amp;&amp; vm.inputMbti.length() > 0}"
+            android:enabled="@{vm.inputId.length() > 0 &amp;&amp; vm.inputPwd.length() > 0 &amp;&amp; vm.inputName.length() > 0}"
             android:onClick="@{()->vm.signUpOnClick()}"
             android:text="@string/sign_up_complete"
             app:layout_constraintTop_toBottomOf="@id/et_sign_up_mbti" />

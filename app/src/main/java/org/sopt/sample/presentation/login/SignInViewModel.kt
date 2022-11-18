@@ -1,5 +1,6 @@
 package org.sopt.sample.presentation.login
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -7,45 +8,56 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import org.sopt.sample.data.entity.User
-import org.sopt.sample.util.SaveUserInfo
+import org.sopt.sample.data.repository.AuthRepository
 import javax.inject.Inject
 
 @HiltViewModel
 class SignInViewModel @Inject constructor(
-    private val saveUserInfo: SaveUserInfo
+    private val authRepository: AuthRepository
 ) : ViewModel() {
-    private val _userInfo = MutableLiveData<User>()
-    val userInfo: LiveData<User> = _userInfo
-
     val inputId = MutableLiveData<String>()
     val inputPwd = MutableLiveData<String>()
-    val isAutoLogin = MutableLiveData<Boolean>()
+    val isAutoLogin = MutableLiveData(false)
 
     private val _successLogin = MutableLiveData<Boolean>()
     val successLogin: LiveData<Boolean> = _successLogin
 
+    private val _userInfo = MutableLiveData<User>()
+    val userInfo: LiveData<User> = _userInfo
+
     init {
-        viewModelScope.launch {
-            if (saveUserInfo.getAutoLogin()) {
-                _userInfo.value = saveUserInfo.getUserInfo()
-                _successLogin.value = true
-            }
-        }
+        getAutoLogin()
     }
 
     fun loginOnClick() {
         viewModelScope.launch {
-            if (inputId.value == userInfo.value?.id && inputPwd.value == userInfo.value?.pwd) {
-                if (isAutoLogin.value!!) {
-                    saveUserInfo.setAutoLogin(isAutoLogin = true)
-                    saveUserInfo.setUserInfo(userInfo.value!!)
-                }
-                _successLogin.value = true
-            } else _successLogin.value = false
+            postSignIn(requireNotNull(inputId.value), requireNotNull(inputPwd.value))
         }
     }
 
-    fun setUserInfo(user: User) {
-        _userInfo.value = user
+    private fun postSignIn(id: String, pwd: String) {
+        viewModelScope.launch {
+            authRepository.postSignIn(id, pwd)
+                .onSuccess { response ->
+                    if (isAutoLogin.value!!) {
+                        authRepository.setAutoLogin(isAutoLogin = true)
+                    }
+                    authRepository.setUserInfo(response.result)
+                    _successLogin.value = true
+                    _userInfo.value = response.result
+                    Log.e("asdf", response.message + response.result)
+                }.onFailure { throwable ->
+                    _successLogin.value = false
+                    Log.e("asdf", throwable.message.toString())
+                }
+        }
+    }
+
+    private fun getAutoLogin() {
+        viewModelScope.launch {
+            if (authRepository.getAutoLogin()) {
+                _successLogin.value = true
+            }
+        }
     }
 }

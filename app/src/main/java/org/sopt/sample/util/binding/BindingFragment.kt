@@ -1,4 +1,4 @@
-package org.sopt.sample.util.base
+package org.sopt.sample.util.binding
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,7 +10,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import org.sopt.sample.R
 
-abstract class BaseFragment<T : ViewDataBinding>(
+abstract class BindingFragment<T : ViewDataBinding>(
     @LayoutRes private val layoutRes: Int
 ) : Fragment() {
     private var _binding: T? = null

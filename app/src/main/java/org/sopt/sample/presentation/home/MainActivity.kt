@@ -8,10 +8,10 @@ import org.sopt.sample.databinding.ActivityMainBinding
 import org.sopt.sample.presentation.home.gallery.GalleryFragment
 import org.sopt.sample.presentation.home.home.HomeFragment
 import org.sopt.sample.presentation.home.search.SearchFragment
-import org.sopt.sample.util.base.BaseActivity
+import org.sopt.sample.util.binding.BindingActivity
 
 @AndroidEntryPoint
-class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
+class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initTransactionEvent()

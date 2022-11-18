@@ -12,10 +12,11 @@ import retrofit2.Retrofit
 @Module
 @InstallIn(SingletonComponent::class)
 object RetrofitServiceModule {
+    @Provides
     fun provideAuthService(@RetrofitModule.Retrofit2(RetrofitType.SOPT) retrofit: Retrofit): AuthService =
         retrofit.create(AuthService::class.java)
 
     @Provides
-    fun provideReqResService(@RetrofitModule.Retrofit2(RetrofitType.SOPT) retrofit: Retrofit): ReqResService =
+    fun provideReqResService(@RetrofitModule.Retrofit2(RetrofitType.REQ_RES) retrofit: Retrofit): ReqResService =
         retrofit.create(ReqResService::class.java)
 }

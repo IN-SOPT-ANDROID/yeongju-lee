@@ -1,18 +1,15 @@
-package org.sopt.sample.util
+package org.sopt.sample.data.source.local
 
-import android.content.Context
 import android.content.SharedPreferences
 import com.google.gson.Gson
-import dagger.hilt.android.qualifiers.ApplicationContext
 import org.sopt.sample.data.entity.User
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class SaveUserInfo @Inject constructor(@ApplicationContext context: Context) {
-    private val prefs: SharedPreferences =
-        context.getSharedPreferences(STORAGE_KEY, Context.MODE_PRIVATE)
-
+class LocalPrefDataSource @Inject constructor(
+    private val prefs: SharedPreferences
+) {
     fun setAutoLogin(isAutoLogin: Boolean) {
         prefs.edit().putBoolean(AUTO_LOGIN, isAutoLogin).apply()
     }
