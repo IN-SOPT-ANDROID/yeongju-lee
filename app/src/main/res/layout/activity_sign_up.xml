@@ -71,33 +71,33 @@
             android:layout_marginHorizontal="40dp"
             android:layout_marginTop="20dp"
             android:hint="@string/sign_up_pwd_hint"
-            android:inputType="text"
+            android:inputType="textPassword"
             android:text="@={vm.inputPwd}"
             app:layout_constraintTop_toBottomOf="@id/tv_sign_up_pwd" />
 
         <TextView
-            android:id="@+id/tv_sign_up_mbti"
+            android:id="@+id/tv_sign_up_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
             android:layout_marginTop="24dp"
-            android:text="@string/mbti"
+            android:text="@string/name"
             android:textColor="@color/black"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/et_sign_up_pwd" />
 
         <EditText
-            android:id="@+id/et_sign_up_mbti"
+            android:id="@+id/et_sign_up_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="40dp"
             android:layout_marginTop="20dp"
-            android:hint="@string/mbti_hint"
+            android:hint="@string/name_hint"
             android:inputType="textCapCharacters"
             android:maxLength="4"
-            android:text="@={vm.inputMbti}"
-            app:layout_constraintTop_toBottomOf="@id/tv_sign_up_mbti" />
+            android:text="@={vm.inputName}"
+            app:layout_constraintTop_toBottomOf="@id/tv_sign_up_name" />
 
         <Button
             android:id="@+id/btn_sign_up"
@@ -105,10 +105,10 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="40dp"
             android:layout_marginTop="20dp"
-            android:enabled="@{vm.inputId.length() > 0 &amp;&amp; vm.inputPwd.length() > 0 &amp;&amp; vm.inputMbti.length() > 0}"
+            android:enabled="@{vm.inputId.length() > 0 &amp;&amp; vm.inputPwd.length() > 0 &amp;&amp; vm.inputName.length() > 0}"
             android:onClick="@{()->vm.signUpOnClick()}"
             android:text="@string/sign_up_complete"
-            app:layout_constraintTop_toBottomOf="@id/et_sign_up_mbti" />
+            app:layout_constraintTop_toBottomOf="@id/et_sign_up_name" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
