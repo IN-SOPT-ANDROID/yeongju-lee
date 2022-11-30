@@ -1,8 +1,8 @@
 package org.sopt.sample.data.repository
 
 import org.sopt.sample.data.entity.User
-import org.sopt.sample.data.model.response.SignInResponse
-import org.sopt.sample.data.model.response.SignUpResponse
+import org.sopt.sample.data.entity.response.SignInResponse
+import org.sopt.sample.data.entity.response.SignUpResponse
 
 interface AuthRepository {
     fun setAutoLogin(isAutoLogin: Boolean)
