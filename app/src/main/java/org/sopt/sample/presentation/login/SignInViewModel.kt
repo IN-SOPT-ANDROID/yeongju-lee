@@ -21,8 +21,7 @@ class SignInViewModel @Inject constructor(
     private val _successLogin = MutableLiveData<Boolean>()
     val successLogin: LiveData<Boolean> = _successLogin
 
-    private val _userInfo = MutableLiveData<User>()
-    val userInfo: LiveData<User> = _userInfo
+    private val userInfo = MutableLiveData<User>()
 
     init {
         getAutoLogin()
@@ -43,7 +42,7 @@ class SignInViewModel @Inject constructor(
                     }
                     authRepository.setUserInfo(response.result)
                     _successLogin.value = true
-                    _userInfo.value = response.result
+                    userInfo.value = response.result
                 }.onFailure {
                     _successLogin.value = false
                 }

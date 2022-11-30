@@ -11,6 +11,8 @@ interface AuthRepository {
     fun setUserInfo(user: User)
     fun getUserInfo(): User
 
+    fun setLogout()
+
     suspend fun postSignIn(
         email: String,
         password: String

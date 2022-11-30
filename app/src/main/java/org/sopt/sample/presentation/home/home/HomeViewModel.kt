@@ -41,17 +41,7 @@ class HomeViewModel @Inject constructor(
 
     fun logout() {
         viewModelScope.launch {
-            authRepository.setAutoLogin(isAutoLogin = false)
-            authRepository.setUserInfo(
-                User(
-                    id = -1,
-                    name = "",
-                    profileImage = null,
-                    bio = null,
-                    email = "",
-                    password = ""
-                )
-            )
+            authRepository.setLogout()
         }
     }
 }

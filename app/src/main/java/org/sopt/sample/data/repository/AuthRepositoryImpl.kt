@@ -25,6 +25,20 @@ class AuthRepositoryImpl @Inject constructor(
 
     override fun getUserInfo(): User = localPrefDataSource.getUserInfo()
 
+    override fun setLogout() {
+        localPrefDataSource.setAutoLogin(false)
+        localPrefDataSource.setUserInfo(
+            User(
+                id = -1,
+                name = "",
+                profileImage = null,
+                bio = null,
+                email = "",
+                password = ""
+            )
+        )
+    }
+
     override suspend fun postSignIn(email: String, password: String): Result<SignInResponse> =
         runCatching { authDataSource.postSignIn(SignInRequest(email, password)) }
 

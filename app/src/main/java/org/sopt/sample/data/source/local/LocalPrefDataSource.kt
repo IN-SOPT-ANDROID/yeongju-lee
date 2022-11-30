@@ -4,9 +4,7 @@ import android.content.SharedPreferences
 import com.google.gson.Gson
 import org.sopt.sample.data.entity.User
 import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
 class LocalPrefDataSource @Inject constructor(
     private val prefs: SharedPreferences
 ) {
@@ -29,7 +27,6 @@ class LocalPrefDataSource @Inject constructor(
 
     companion object {
         const val AUTO_LOGIN = "AutoLogin"
-        const val STORAGE_KEY = "StorageKey"
         const val USER_INFO = "UserInfo"
     }
 }
