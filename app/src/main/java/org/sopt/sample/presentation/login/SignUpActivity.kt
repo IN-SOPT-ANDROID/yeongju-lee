@@ -15,21 +15,13 @@ class SignUpActivity : BindingActivity<ActivitySignUpBinding>(R.layout.activity_
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.vm = signUpViewModel
-        initIsSignUpRuleObserve()
         initSuccessSignUpObserve()
-    }
-
-    private fun initIsSignUpRuleObserve() {
-        signUpViewModel.isSignUpRule.observe(this) { match ->
-            if (!match) {
-                showToast(getString(R.string.check_your_input))
-            }
-        }
     }
 
     private fun initSuccessSignUpObserve() {
         signUpViewModel.successSignUp.observe(this) { success ->
             if (success) {
+                showToast(getString(R.string.complete_sign_up))
                 finish()
             } else {
                 showToast(getString(R.string.fail_sign_up))

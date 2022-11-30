@@ -22,26 +22,15 @@ class SignUpViewModel @Inject constructor(
     val isValidPwd: LiveData<Boolean> =
         Transformations.map(inputPwd) { inputPwd -> checkPwd(inputPwd) }
 
-    private val _isSignUpRule = MutableLiveData<Boolean>()
-    val isSignUpRule: LiveData<Boolean> = _isSignUpRule
-
     private val _successSignUp = MutableLiveData<Boolean>()
     val successSignUp: LiveData<Boolean> = _successSignUp
 
     fun signUpOnClick() {
-        viewModelScope.launch {
-            _isSignUpRule.value =
-                (inputId.value?.length in 6..10) && (inputPwd.value?.length in 6..12)
-            if (_isSignUpRule.value == true) {
-                postSignUp(
-                    requireNotNull(inputId.value),
-                    requireNotNull(inputPwd.value),
-                    requireNotNull(inputName.value)
-                )
-            } else {
-                return@launch
-            }
-        }
+        postSignUp(
+            requireNotNull(inputId.value),
+            requireNotNull(inputPwd.value),
+            requireNotNull(inputName.value)
+        )
     }
 
     private fun postSignUp(id: String, pwd: String, name: String) {
@@ -56,10 +45,10 @@ class SignUpViewModel @Inject constructor(
     }
 
     private fun checkId(id: String): Boolean {
-        return id.matches("^(?=.*[a-zA-Z])(?=.*[0-9]).{6,10}\$".toRegex()) || id.isNullOrEmpty()
+        return id.matches("^(?=.*[a-zA-Z])(?=.*[0-9]).{6,10}\$".toRegex()) || id.isEmpty()
     }
 
     private fun checkPwd(pwd: String): Boolean {
-        return pwd.matches("^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#\$%^&*]).{6,12}\$".toRegex()) || pwd.isNullOrEmpty()
+        return pwd.matches("^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#\$%^&*]).{6,12}\$".toRegex()) || pwd.isEmpty()
     }
 }
