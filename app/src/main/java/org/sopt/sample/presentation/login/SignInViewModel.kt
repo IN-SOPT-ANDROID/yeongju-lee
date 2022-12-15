@@ -21,40 +21,40 @@ class SignInViewModel @Inject constructor(
     private val _successLogin = MutableLiveData<Boolean>()
     val successLogin: LiveData<Boolean> = _successLogin
 
-    private val _userInfo = MutableLiveData<User>()
-    val userInfo: LiveData<User> = _userInfo
-
     init {
         getAutoLogin()
     }
 
     fun loginOnClick() {
-        viewModelScope.launch {
-            postSignIn(requireNotNull(inputId.value), requireNotNull(inputPwd.value))
-        }
+        postSignIn(requireNotNull(inputId.value), requireNotNull(inputPwd.value))
     }
 
     private fun postSignIn(id: String, pwd: String) {
         viewModelScope.launch {
             authRepository.postSignIn(id, pwd)
                 .onSuccess { response ->
-                    if (isAutoLogin.value!!) {
-                        authRepository.setAutoLogin(isAutoLogin = true)
-                    }
-                    authRepository.setUserInfo(response.result)
+                    setAutoLogin(requireNotNull(isAutoLogin.value))
+                    setUserInfo(response.result)
                     _successLogin.value = true
-                    _userInfo.value = response.result
                 }.onFailure {
                     _successLogin.value = false
                 }
         }
     }
 
+    private fun setAutoLogin(isAutoLogin: Boolean) {
+        if (isAutoLogin) {
+            authRepository.setAutoLogin(isAutoLogin = true)
+        }
+    }
+
+    private fun setUserInfo(user: User) {
+        authRepository.setUserInfo(user)
+    }
+
     private fun getAutoLogin() {
-        viewModelScope.launch {
-            if (authRepository.getAutoLogin()) {
-                _successLogin.value = true
-            }
+        if (authRepository.getAutoLogin()) {
+            _successLogin.value = true
         }
     }
 }

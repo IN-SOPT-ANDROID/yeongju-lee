@@ -13,10 +13,9 @@
     <string name="sign_in_id_hint">아이디를 입력하세요.</string>
     <string name="sign_in_pwd_hint">비밀번호를 입력하세요.</string>
     <string name="name_hint">이름을 입력하세요.</string>
-    <string name="sign_up_id_hint">6글자 이상 10글자 이하</string>
-    <string name="sign_up_pwd_hint">8글자 이상 12글자 이하</string>
+    <string name="sign_up_id_hint">영어, 숫자 포함 (6~10자)</string>
+    <string name="sign_up_pwd_hint">영어, 숫자, 특문 포함(6~12자)</string>
     <string name="sign_up_complete">회원가입 완료</string>
-    <string name="check_your_input">입력한 정보를 확인해주세요.</string>
     <string name="fail_sign_up">이미 입력한 정보가 존재합니다.</string>
     <string name="complete_sign_up">회원가입이 완료되었습니다.</string>
     <string name="success_login">반갑습니다!</string>
@@ -24,6 +23,7 @@
     <string name="success_logout">로그아웃 되었습니다.</string>
     <string name="auto_login">자동로그인</string>
     <string name="logout">Logout</string>
+    <string name="sign_up_pwd_error">비밀번호 조건이 맞지 않습니다.</string>
 
     <string name="home_expressed_name">이름 : %s</string>
     <string name="home_expressed_mbti">MBTI : %s</string>

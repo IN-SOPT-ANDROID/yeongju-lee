@@ -1,6 +1,6 @@
 package org.sopt.sample.data.repository
 
-import org.sopt.sample.data.model.response.FollowerResponse
+import org.sopt.sample.data.entity.response.FollowerResponse
 
 interface ReqResRepository {
     suspend fun getFollower(): Result<FollowerResponse>

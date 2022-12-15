@@ -1,4 +1,4 @@
-package org.sopt.sample.data.model.request
+package org.sopt.sample.data.entity.request
 
 import kotlinx.serialization.Serializable
 

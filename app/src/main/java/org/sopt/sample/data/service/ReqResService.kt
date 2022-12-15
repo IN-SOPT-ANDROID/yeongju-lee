@@ -1,6 +1,6 @@
 package org.sopt.sample.data.service
 
-import org.sopt.sample.data.model.response.FollowerResponse
+import org.sopt.sample.data.entity.response.FollowerResponse
 import retrofit2.http.GET
 
 interface ReqResService {

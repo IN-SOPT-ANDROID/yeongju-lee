@@ -1,6 +1,5 @@
 package org.sopt.sample.presentation.home.home
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -34,24 +33,11 @@ class HomeViewModel @Inject constructor(
                 .onSuccess { response ->
                     _userInfo.value = authRepository.getUserInfo()
                     _followerInfo.value = response.data
-                    Log.e("asdf", _userInfo.value.toString())
                 }
         }
     }
 
     fun logout() {
-        viewModelScope.launch {
-            authRepository.setAutoLogin(isAutoLogin = false)
-            authRepository.setUserInfo(
-                User(
-                    id = -1,
-                    name = "",
-                    profileImage = null,
-                    bio = null,
-                    email = "",
-                    password = ""
-                )
-            )
-        }
+        authRepository.setLogout()
     }
 }

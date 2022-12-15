@@ -9,6 +9,7 @@
             name="vm"
             type="org.sopt.sample.presentation.login.SignUpViewModel" />
 
+        <import type="android.view.View" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -47,8 +48,10 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="40dp"
             android:layout_marginTop="20dp"
+            android:background="@{vm.isValidId ? @drawable/shape_gray_line_10_rect : @drawable/shape_red_line_10_rect}"
             android:hint="@string/sign_up_id_hint"
             android:inputType="text"
+            android:paddingHorizontal="5dp"
             android:text="@={vm.inputId}"
             app:layout_constraintTop_toBottomOf="@id/tv_sign_up_id" />
 
@@ -70,10 +73,22 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="40dp"
             android:layout_marginTop="20dp"
+            android:background="@{vm.isValidPwd ? @drawable/shape_gray_line_10_rect : @drawable/shape_red_line_10_rect}"
             android:hint="@string/sign_up_pwd_hint"
             android:inputType="textPassword"
+            android:paddingHorizontal="5dp"
             android:text="@={vm.inputPwd}"
             app:layout_constraintTop_toBottomOf="@id/tv_sign_up_pwd" />
+
+        <TextView
+            android:id="@+id/tv_sign_up_pwd_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sign_up_pwd_error"
+            android:textColor="@color/red"
+            android:visibility="@{vm.isValidPwd ? View.INVISIBLE : View.VISIBLE}"
+            app:layout_constraintEnd_toEndOf="@id/et_sign_up_pwd"
+            app:layout_constraintTop_toBottomOf="@id/et_sign_up_pwd" />
 
         <TextView
             android:id="@+id/tv_sign_up_name"
@@ -96,6 +111,7 @@
             android:hint="@string/name_hint"
             android:inputType="textCapCharacters"
             android:maxLength="4"
+            android:paddingHorizontal="5dp"
             android:text="@={vm.inputName}"
             app:layout_constraintTop_toBottomOf="@id/tv_sign_up_name" />
 
@@ -105,7 +121,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="40dp"
             android:layout_marginTop="20dp"
-            android:enabled="@{vm.inputId.length() > 0 &amp;&amp; vm.inputPwd.length() > 0 &amp;&amp; vm.inputName.length() > 0}"
+            android:enabled="@{vm.isValidId &amp;&amp; vm.isValidPwd &amp;&amp; vm.inputName.length() > 0}"
             android:onClick="@{()->vm.signUpOnClick()}"
             android:text="@string/sign_up_complete"
             app:layout_constraintTop_toBottomOf="@id/et_sign_up_name" />

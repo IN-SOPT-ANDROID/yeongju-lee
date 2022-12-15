@@ -1,10 +1,10 @@
 package org.sopt.sample.data.repository
 
 import org.sopt.sample.data.entity.User
-import org.sopt.sample.data.model.request.SignInRequest
-import org.sopt.sample.data.model.request.SignUpRequest
-import org.sopt.sample.data.model.response.SignInResponse
-import org.sopt.sample.data.model.response.SignUpResponse
+import org.sopt.sample.data.entity.request.SignInRequest
+import org.sopt.sample.data.entity.request.SignUpRequest
+import org.sopt.sample.data.entity.response.SignInResponse
+import org.sopt.sample.data.entity.response.SignUpResponse
 import org.sopt.sample.data.source.local.LocalPrefDataSource
 import org.sopt.sample.data.source.remote.AuthDataSource
 import javax.inject.Inject
@@ -24,6 +24,20 @@ class AuthRepositoryImpl @Inject constructor(
     }
 
     override fun getUserInfo(): User = localPrefDataSource.getUserInfo()
+
+    override fun setLogout() {
+        localPrefDataSource.setAutoLogin(false)
+        localPrefDataSource.setUserInfo(
+            User(
+                id = -1,
+                name = "",
+                profileImage = null,
+                bio = null,
+                email = "",
+                password = ""
+            )
+        )
+    }
 
     override suspend fun postSignIn(email: String, password: String): Result<SignInResponse> =
         runCatching { authDataSource.postSignIn(SignInRequest(email, password)) }
